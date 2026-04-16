@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: tea
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:teadb}
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME:tea}
+    password: ${DB_PASSWORD:tea1234}
+  docker:
+    compose:
+      lifecycle-management: start_only
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      mode: always
+  graphql:
+    graphiql:
+      enabled: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug

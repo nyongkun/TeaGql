@@ -1,0 +1,34 @@
+type Brand {
+    id: ID!
+    name: String!
+    country: String
+}
+
+type Tea {
+    id: ID!
+    name: String!
+    type: TeaType!
+    brand: Brand!
+    originCountry: String
+    caffeine: Boolean!
+    description: String
+    rating: Float
+    createdAt: DateTime!
+}
+
+type Query {
+    teas: [Tea!]!
+    tea(id: ID!): Tea
+    teasByType(type: TeaType!): [Tea!]!
+    teasByBrand(brandName: String!): [Tea!]!
+    teasByCaffeine(caffeine: Boolean!): [Tea!]!
+    brands: [Brand!]!
+}
+
+type Mutation {
+    createBrand(input: CreateBrandInput!): Brand!
+    updateBrand(input: UpdateBrandInput!): Brand!
+    createTea(input: CreateTeaInput!): Tea!
+    updateTea(input: UpdateTeaInput!): Tea!
+    deleteTea(id: ID!): Boolean!
+}

@@ -1,0 +1,31 @@
+input CreateBrandInput {
+    name: String!
+    country: String
+}
+
+input UpdateBrandInput {
+    id: ID!
+    name: String!
+    country: String
+}
+
+input CreateTeaInput {
+    name: String!
+    type: TeaType!
+    brandId: ID!
+    originCountry: String
+    caffeine: Boolean!
+    description: String
+    rating: Float
+}
+
+input UpdateTeaInput {
+    id: ID!
+    name: String!
+    type: TeaType!
+    brandId: ID!
+    originCountry: String
+    caffeine: Boolean!
+    description: String
+    rating: Float
+}

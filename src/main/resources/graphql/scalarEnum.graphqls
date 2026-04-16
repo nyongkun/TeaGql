@@ -1,0 +1,11 @@
+scalar DateTime
+
+enum TeaType {
+    GREEN
+    BLACK
+    OOLONG
+    HERBAL
+    WHITE
+    PUER
+    MATCHA
+}

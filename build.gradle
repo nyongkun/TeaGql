@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.3'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Tea GraphQL Playground'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+configurations {
+    developmentOnly
+
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.graphql-java:graphql-java-extended-scalars:24.0'
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+
+    runtimeOnly 'org.postgresql:postgresql'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.graphql:spring-graphql-test'
+    testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.testcontainers:testcontainers-junit-jupiter:2.0.3'
+    testImplementation 'org.testcontainers:testcontainers-jdbc:2.0.3'
+    testImplementation 'org.testcontainers:testcontainers-postgresql:2.0.3'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

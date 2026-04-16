@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16:///teadb
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    username: tea
+    password: tea1234
+  jpa:
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+    open-in-view: false
+  sql:
+    init:
+      mode: always

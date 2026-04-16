@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: tea-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: teadb
+      POSTGRES_USER: tea
+      POSTGRES_PASSWORD: tea1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - tea-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tea -d teadb"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  tea-postgres-data:
