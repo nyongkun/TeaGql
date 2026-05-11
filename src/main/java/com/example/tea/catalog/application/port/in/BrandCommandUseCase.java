@@ -1,9 +1,9 @@
 package com.example.tea.catalog.application.port.in;
 
-import com.example.tea.catalog.application.command.CreateBrandCommand;
-import com.example.tea.catalog.application.command.UpdateBrandCommand;
+import com.example.tea.catalog.application.dto.command.CreateBrandCommand;
+import com.example.tea.catalog.application.dto.command.UpdateBrandCommand;
 import com.example.tea.catalog.application.port.in.base.CommandUseCase;
-import com.example.tea.catalog.application.result.BrandResult;
+import com.example.tea.catalog.application.dto.result.BrandResult;
 
 public interface BrandCommandUseCase extends CommandUseCase<CreateBrandCommand, UpdateBrandCommand, BrandResult> {
 

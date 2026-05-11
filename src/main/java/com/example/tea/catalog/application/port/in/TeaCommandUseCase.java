@@ -1,9 +1,9 @@
 package com.example.tea.catalog.application.port.in;
 
-import com.example.tea.catalog.application.command.CreateTeaCommand;
-import com.example.tea.catalog.application.command.UpdateTeaCommand;
+import com.example.tea.catalog.application.dto.command.CreateTeaCommand;
+import com.example.tea.catalog.application.dto.command.UpdateTeaCommand;
 import com.example.tea.catalog.application.port.in.base.CommandUseCase;
-import com.example.tea.catalog.application.result.TeaResult;
+import com.example.tea.catalog.application.dto.result.TeaResult;
 
 public interface TeaCommandUseCase extends CommandUseCase<CreateTeaCommand, UpdateTeaCommand, TeaResult> {
 
