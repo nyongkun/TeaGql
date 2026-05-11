@@ -1,11 +1,11 @@
 package com.example.tea.catalog.application.port.in;
 
 import com.example.tea.catalog.application.port.in.base.QueryUseCase;
-import com.example.tea.catalog.application.query.GetTeaQuery;
-import com.example.tea.catalog.application.query.GetTeasByCaffeineQuery;
-import com.example.tea.catalog.application.query.GetTeasByBrandQuery;
-import com.example.tea.catalog.application.query.GetTeasByTypeQuery;
-import com.example.tea.catalog.application.result.TeaResult;
+import com.example.tea.catalog.application.dto.query.GetTeaQuery;
+import com.example.tea.catalog.application.dto.query.GetTeasByCaffeineQuery;
+import com.example.tea.catalog.application.dto.query.GetTeasByBrandQuery;
+import com.example.tea.catalog.application.dto.query.GetTeasByTypeQuery;
+import com.example.tea.catalog.application.dto.result.TeaResult;
 import java.util.List;
 
 public interface TeaQueryUseCase extends QueryUseCase<TeaResult> {

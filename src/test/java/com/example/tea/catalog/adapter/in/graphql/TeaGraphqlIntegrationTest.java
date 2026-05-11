@@ -44,7 +44,7 @@ class TeaGraphqlIntegrationTest {
     void createsBrandAndTeaThroughMutations() {
         Long brandId = graphQlTester().document("""
                 mutation {
-                  createBrand(input: {name: "Mariage Freres", country: "France"}) {
+                  createBrand(input: {name: "Kusmi Tea", country: "France"}) {
                     id
                     name
                   }
@@ -79,7 +79,7 @@ class TeaGraphqlIntegrationTest {
                 .variable("brandId", brandId)
                 .execute()
                 .path("createTea.name").entity(String.class).isEqualTo("Marco Polo")
-                .path("createTea.brand.name").entity(String.class).isEqualTo("Mariage Freres");
+                .path("createTea.brand.name").entity(String.class).isEqualTo("Kusmi Tea");
     }
 
     @Test
