@@ -2,7 +2,8 @@ package com.example.tea.catalog.application.dto.command;
 
 import com.example.tea.catalog.domain.model.TeaType;
 
-public record CreateTeaCommand(
+public record TeaUpdateCommand(
+        Long id,
         String name,
         TeaType type,
         Long brandId,

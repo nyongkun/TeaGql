@@ -1,25 +1,14 @@
 package com.example.tea.catalog.application.port.in;
 
-import com.example.tea.catalog.application.dto.command.CreateTeaCommand;
-import com.example.tea.catalog.application.dto.command.UpdateTeaCommand;
-import com.example.tea.catalog.application.port.in.base.CommandUseCase;
+import com.example.tea.catalog.application.dto.command.TeaCreateCommand;
+import com.example.tea.catalog.application.dto.command.TeaUpdateCommand;
 import com.example.tea.catalog.application.dto.result.TeaResult;
 
-public interface TeaCommandUseCase extends CommandUseCase<CreateTeaCommand, UpdateTeaCommand, TeaResult> {
+public interface TeaCommandUseCase {
 
-    TeaResult createTea(CreateTeaCommand command);
+    TeaResult createTea(TeaCreateCommand command);
 
-    TeaResult updateTea(UpdateTeaCommand command);
+    TeaResult updateTea(TeaUpdateCommand command);
 
     boolean deleteTea(Long id);
-
-    @Override
-    default TeaResult create(CreateTeaCommand command) {
-        return createTea(command);
-    }
-
-    @Override
-    default TeaResult update(UpdateTeaCommand command) {
-        return updateTea(command);
-    }
 }

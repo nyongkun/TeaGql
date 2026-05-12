@@ -1,8 +1,8 @@
 package com.example.tea.catalog.adapter.in.graphql.resolver;
 
-import com.example.tea.catalog.adapter.in.graphql.converter.BrandGqlConverter;
-import com.example.tea.catalog.adapter.in.graphql.dto.CreateBrandInput;
-import com.example.tea.catalog.adapter.in.graphql.dto.UpdateBrandInput;
+import com.example.tea.catalog.adapter.in.graphql.converter.BrandGraphqlConverter;
+import com.example.tea.catalog.adapter.in.graphql.dto.BrandCreateInput;
+import com.example.tea.catalog.adapter.in.graphql.dto.BrandUpdateInput;
 import com.example.tea.catalog.application.port.in.BrandCommandUseCase;
 import com.example.tea.catalog.application.port.in.BrandQueryUseCase;
 import com.example.tea.catalog.application.dto.result.BrandResult;
@@ -29,12 +29,12 @@ public class BrandGraphqlResolver {
     }
 
     @MutationMapping
-    public BrandResult createBrand(@Valid @Argument CreateBrandInput input) {
-        return brandCommandUseCase.createBrand(BrandGqlConverter.toCommand(input));
+    public BrandResult createBrand(@Valid @Argument BrandCreateInput input) {
+        return brandCommandUseCase.createBrand(BrandGraphqlConverter.toCommand(input));
     }
 
     @MutationMapping
-    public BrandResult updateBrand(@Valid @Argument UpdateBrandInput input) {
-        return brandCommandUseCase.updateBrand(BrandGqlConverter.toCommand(input));
+    public BrandResult updateBrand(@Valid @Argument BrandUpdateInput input) {
+        return brandCommandUseCase.updateBrand(BrandGraphqlConverter.toCommand(input));
     }
 }
