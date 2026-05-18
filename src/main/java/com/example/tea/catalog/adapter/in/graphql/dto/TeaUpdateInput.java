@@ -4,7 +4,9 @@ import com.example.tea.catalog.domain.model.TeaType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record CreateTeaInput(
+public record TeaUpdateInput(
+        @NotNull(message = "Tea id is required.")
+        Long id,
         @NotBlank(message = "Tea name is required.")
         String name,
         @NotNull(message = "Tea type is required.")

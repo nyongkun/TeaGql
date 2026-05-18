@@ -5,7 +5,8 @@ import com.example.tea.catalog.adapter.out.persistence.entity.BrandJpaEntity;
 import com.example.tea.catalog.adapter.out.persistence.entity.TeaJpaEntity;
 import com.example.tea.catalog.adapter.out.persistence.repository.BrandJpaRepository;
 import com.example.tea.catalog.adapter.out.persistence.repository.TeaJpaRepository;
-import com.example.tea.catalog.application.port.out.TeaPort;
+import com.example.tea.catalog.application.port.out.LoadTeaPort;
+import com.example.tea.catalog.application.port.out.SaveTeaPort;
 import com.example.tea.catalog.domain.model.Tea;
 import com.example.tea.catalog.domain.model.TeaType;
 import java.util.List;
@@ -15,39 +16,39 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class TeaJpaAdapter implements TeaPort {
+public class TeaJpaAdapter implements LoadTeaPort, SaveTeaPort {
 
     private final TeaJpaRepository teaJpaRepository;
     private final BrandJpaRepository brandJpaRepository;
 
     @Override
-    public Optional<Tea> findById(Long id) {
+    public Optional<Tea> loadById(Long id) {
         return teaJpaRepository.findById(id).map(TeaJpaConverter::toDomain);
     }
 
     @Override
-    public List<Tea> findAll() {
+    public List<Tea> loadAll() {
         return teaJpaRepository.findAll().stream()
                 .map(TeaJpaConverter::toDomain)
                 .toList();
     }
 
     @Override
-    public List<Tea> findByType(TeaType type) {
+    public List<Tea> loadByType(TeaType type) {
         return teaJpaRepository.findByType(type).stream()
                 .map(TeaJpaConverter::toDomain)
                 .toList();
     }
 
     @Override
-    public List<Tea> findByBrandName(String brandName) {
+    public List<Tea> loadByBrandName(String brandName) {
         return teaJpaRepository.findByBrand_NameIgnoreCase(brandName).stream()
                 .map(TeaJpaConverter::toDomain)
                 .toList();
     }
 
     @Override
-    public List<Tea> findByCaffeine(Boolean caffeine) {
+    public List<Tea> loadByCaffeine(Boolean caffeine) {
         return teaJpaRepository.findByCaffeine(caffeine).stream()
                 .map(TeaJpaConverter::toDomain)
                 .toList();
@@ -66,7 +67,6 @@ public class TeaJpaAdapter implements TeaPort {
         entity.setDescription(domain.getDescription());
         entity.setRating(domain.getRating());
         entity.setCreatedAt(domain.getCreatedAt());
-
         return TeaJpaConverter.toDomain(teaJpaRepository.save(entity));
     }
 

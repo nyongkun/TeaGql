@@ -1,13 +1,12 @@
 package com.example.tea.catalog.adapter.in.graphql.resolver;
 
-import com.example.tea.catalog.adapter.in.graphql.converter.TeaGqlConverter;
-import com.example.tea.catalog.adapter.in.graphql.dto.CreateTeaInput;
-import com.example.tea.catalog.adapter.in.graphql.dto.UpdateTeaInput;
+import com.example.tea.catalog.adapter.in.graphql.converter.TeaGraphqlConverter;
+import com.example.tea.catalog.adapter.in.graphql.dto.TeaCreateInput;
+import com.example.tea.catalog.adapter.in.graphql.dto.TeaUpdateInput;
 import com.example.tea.catalog.application.port.in.TeaCommandUseCase;
 import com.example.tea.catalog.application.port.in.TeaQueryUseCase;
 import com.example.tea.catalog.application.dto.result.TeaResult;
 import com.example.tea.catalog.domain.model.TeaType;
-
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,32 +33,32 @@ public class TeaGraphqlResolver {
 
     @QueryMapping
     public TeaResult tea(@Argument @NotNull(message = "Tea id is required.") Long id) {
-        return teaQueryUseCase.getTea(TeaGqlConverter.toQuery(id));
+        return teaQueryUseCase.getTea(TeaGraphqlConverter.toQuery(id));
     }
 
     @QueryMapping
     public List<TeaResult> teasByType(@Argument @NotNull(message = "Tea type is required.") TeaType type) {
-        return teaQueryUseCase.getTeasByType(TeaGqlConverter.toQuery(type));
+        return teaQueryUseCase.getTeasByType(TeaGraphqlConverter.toQuery(type));
     }
 
     @QueryMapping
     public List<TeaResult> teasByBrand(@Argument @NotBlank(message = "Brand name is required.") String brandName) {
-        return teaQueryUseCase.getTeasByBrand(TeaGqlConverter.toQuery(brandName));
+        return teaQueryUseCase.getTeasByBrand(TeaGraphqlConverter.toQuery(brandName));
     }
 
     @QueryMapping
     public List<TeaResult> teasByCaffeine(@Argument @NotNull(message = "Caffeine flag is required.") Boolean caffeine) {
-        return teaQueryUseCase.getTeasByCaffeine(TeaGqlConverter.toQuery(caffeine));
+        return teaQueryUseCase.getTeasByCaffeine(TeaGraphqlConverter.toQuery(caffeine));
     }
 
     @MutationMapping
-    public TeaResult createTea(@Valid @Argument CreateTeaInput input) {
-        return teaCommandUseCase.createTea(TeaGqlConverter.toCommand(input));
+    public TeaResult createTea(@Valid @Argument TeaCreateInput input) {
+        return teaCommandUseCase.createTea(TeaGraphqlConverter.toCommand(input));
     }
 
     @MutationMapping
-    public TeaResult updateTea(@Valid @Argument UpdateTeaInput input) {
-        return teaCommandUseCase.updateTea(TeaGqlConverter.toCommand(input));
+    public TeaResult updateTea(@Valid @Argument TeaUpdateInput input) {
+        return teaCommandUseCase.updateTea(TeaGraphqlConverter.toCommand(input));
     }
 
     @MutationMapping

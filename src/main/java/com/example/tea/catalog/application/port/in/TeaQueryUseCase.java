@@ -1,27 +1,21 @@
 package com.example.tea.catalog.application.port.in;
 
-import com.example.tea.catalog.application.port.in.base.QueryUseCase;
-import com.example.tea.catalog.application.dto.query.GetTeaQuery;
-import com.example.tea.catalog.application.dto.query.GetTeasByCaffeineQuery;
-import com.example.tea.catalog.application.dto.query.GetTeasByBrandQuery;
-import com.example.tea.catalog.application.dto.query.GetTeasByTypeQuery;
+import com.example.tea.catalog.application.dto.query.TeaByIdQuery;
+import com.example.tea.catalog.application.dto.query.TeaByCaffeineQuery;
+import com.example.tea.catalog.application.dto.query.TeaByBrandQuery;
+import com.example.tea.catalog.application.dto.query.TeaByTypeQuery;
 import com.example.tea.catalog.application.dto.result.TeaResult;
 import java.util.List;
 
-public interface TeaQueryUseCase extends QueryUseCase<TeaResult> {
+public interface TeaQueryUseCase {
 
     List<TeaResult> getTeas();
 
-    TeaResult getTea(GetTeaQuery query);
+    TeaResult getTea(TeaByIdQuery query);
 
-    List<TeaResult> getTeasByType(GetTeasByTypeQuery query);
+    List<TeaResult> getTeasByType(TeaByTypeQuery query);
 
-    List<TeaResult> getTeasByBrand(GetTeasByBrandQuery query);
+    List<TeaResult> getTeasByBrand(TeaByBrandQuery query);
 
-    List<TeaResult> getTeasByCaffeine(GetTeasByCaffeineQuery query);
-
-    @Override
-    default List<TeaResult> getAll() {
-        return getTeas();
-    }
+    List<TeaResult> getTeasByCaffeine(TeaByCaffeineQuery query);
 }
