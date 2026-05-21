@@ -5,7 +5,7 @@ import com.example.tea.catalog.adapter.in.graphql.dto.BrandUpdateInput;
 import com.example.tea.catalog.application.dto.command.BrandCreateCommand;
 import com.example.tea.catalog.application.dto.command.BrandUpdateCommand;
 
-public class BrandGraphqlConverter {
+public class BrandConverter {
 
     public static BrandCreateCommand toCommand(BrandCreateInput input) {
         return new BrandCreateCommand(
