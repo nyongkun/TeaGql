@@ -1,5 +1,7 @@
 package com.example.tea.catalog.domain.model;
 
+import com.example.tea.global.exception.DomainException;
+import com.example.tea.global.exception.code.ErrorCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +17,8 @@ public class Brand {
     }
 
     public Brand(Long id, String name, String country) {
+        if (name == null || name.isBlank())
+            throw new DomainException(ErrorCode.BRAND_NAME_REQUIRED);
         this.id = id;
         this.name = name;
         this.country = country;
