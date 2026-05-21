@@ -1,6 +1,6 @@
 package com.example.tea.catalog.adapter.in.graphql.resolver;
 
-import com.example.tea.catalog.adapter.in.graphql.converter.BrandGraphqlConverter;
+import com.example.tea.catalog.adapter.in.graphql.converter.BrandConverter;
 import com.example.tea.catalog.adapter.in.graphql.dto.BrandCreateInput;
 import com.example.tea.catalog.adapter.in.graphql.dto.BrandUpdateInput;
 import com.example.tea.catalog.application.port.in.BrandCommandUseCase;
@@ -18,7 +18,7 @@ import org.springframework.validation.annotation.Validated;
 @Controller
 @Validated
 @RequiredArgsConstructor
-public class BrandGraphqlResolver {
+public class BrandResolver {
 
     private final BrandQueryUseCase brandQueryUseCase;
     private final BrandCommandUseCase brandCommandUseCase;
@@ -30,11 +30,11 @@ public class BrandGraphqlResolver {
 
     @MutationMapping
     public BrandResult createBrand(@Valid @Argument BrandCreateInput input) {
-        return brandCommandUseCase.createBrand(BrandGraphqlConverter.toCommand(input));
+        return brandCommandUseCase.createBrand(BrandConverter.toCommand(input));
     }
 
     @MutationMapping
     public BrandResult updateBrand(@Valid @Argument BrandUpdateInput input) {
-        return brandCommandUseCase.updateBrand(BrandGraphqlConverter.toCommand(input));
+        return brandCommandUseCase.updateBrand(BrandConverter.toCommand(input));
     }
 }

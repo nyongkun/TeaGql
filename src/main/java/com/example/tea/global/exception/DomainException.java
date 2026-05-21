@@ -1,0 +1,22 @@
+package com.example.tea.global.exception;
+
+import com.example.tea.global.exception.code.ErrorCode;
+
+public class DomainException extends RuntimeException {
+
+    private final ErrorCode errorCode;
+
+    public DomainException(ErrorCode errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
+    }
+
+    public DomainException(ErrorCode errorCode, Throwable cause) {
+        super(errorCode.getMessage(), cause);
+        this.errorCode = errorCode;
+    }
+
+    public ErrorCode getErrorCode() {
+        return errorCode;
+    }
+}

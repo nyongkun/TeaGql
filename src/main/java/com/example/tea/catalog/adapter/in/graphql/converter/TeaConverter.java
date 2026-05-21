@@ -10,7 +10,7 @@ import com.example.tea.catalog.application.dto.query.TeaByBrandQuery;
 import com.example.tea.catalog.application.dto.query.TeaByTypeQuery;
 import com.example.tea.catalog.domain.model.TeaType;
 
-public class TeaGraphqlConverter {
+public class TeaConverter {
 
     public static TeaCreateCommand toCommand(TeaCreateInput input) {
         return new TeaCreateCommand(
